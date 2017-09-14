@@ -25,8 +25,8 @@ The Environmental Protection Commission of Hillsborough County (EPCHC) has been 
 ## Code to Download EPCHC Dataset
 ```{r epchc_download}
 #URL of EPCHC's long-term dataset in Excel Spreadsheet format
-# epchc_url <- "ftp://ftp.epchc.org/EPC_ERM_FTP/WQM_Reports/RWMDataSpreadsheet_ThroughCurrentReportMonth.xlsx"
-# download.file(url = epchc_url, destfile = './data-raw/epchc.xlsx', method = "libcurl", mode = "wb")
+ epchc_url <- "ftp://ftp.epchc.org/EPC_ERM_FTP/WQM_Reports/RWMDataSpreadsheet_ThroughCurrentReportMonth.xlsx"
+ download.file(url = epchc_url, destfile = './data-raw/epchc.xlsx', method = "libcurl", mode = "wb")
 ```
 
 ## Correctly Import EPCHC xlsx Data File into R
@@ -58,41 +58,41 @@ targets <- data.frame(bay_segment = c("OTB", "HB", "MTB", "LTB"),
                            la_thresh = c(0.88, 1.67, 0.91, 0.68))
 
 #Import the raw dataset into R
-#epcdata <- read_xlsx("./data-raw/epchc.xlsx", 
-#                     sheet="RWMDataSpreadsheet", 
-#                     col_types = c("numeric", "numeric", "text", "text", "text", "text", 
-#                                   "numeric", "numeric", "text", "numeric", "numeric", 
-#                                   "text", "date", "text", "numeric", "text", "text", 
-#                                   "numeric", "numeric", "numeric", "numeric", "text", 
-#                                   "text", "text", "numeric", "text", "numeric", "text", 
-#                                   "numeric", "text", "numeric", "text", "numeric", 
-#                                   "text", "numeric", "text", "numeric", "text", 
-#                                   "numeric", "text", "numeric", "text", "numeric", 
-#                                   "text", "numeric", "text", "numeric", "text", 
-#                                   "numeric", "text", "numeric", "text", "numeric", 
-#                                   "text", "numeric", "text", "numeric", "text", 
-#                                   "numeric", "text", "numeric", "text", "numeric", 
-#                                   "text", "numeric", "text", "text", "text", "text", 
-#                                   "text", "text", "text", "text", "text", "text", 
-#                                   "text", "text", "text", "text", "text", "text", 
-#                                   "text", "text", "text", "text", "text", "text", 
-#                                   "text", "text", "text", "text", "text", "text",
-#                                   "text", "text", "text", "text", "text", "text", 
-#                                   "text", "text", "text", "text", "text", "text", 
-#                                   "text", "text", "text", "text", "text", "text", 
-#                                   "text", "text", "text", "text", "text", "text", 
-#                                   "text", "text", "text", "text", "text", "text",
-#                                   "text", "text", "text", "text", "text", "text",
-#                                   "text", "text", "text", "text", "text", "text", 
-#                                   "text", "text", "text", "text", "text", "text",
-#                                   "text", "text", "text", "text", "text", "text",
-#                                   "text", "text", "text", "text", "text", "text",
-#                                   "text", "text", "text", "text", "text", "text",
-#                                   "text", "text", "text"),
-#                     col_names = epcnames, 
-#                     skip=1, na="")
+epcdata <- read_xlsx("./data-raw/epchc.xlsx", 
+                     sheet="RWMDataSpreadsheet", 
+                     col_types = c("numeric", "numeric", "text", "text", "text", "text", 
+                                   "numeric", "numeric", "text", "numeric", "numeric", 
+                                   "text", "date", "text", "numeric", "text", "text", 
+                                   "numeric", "numeric", "numeric", "numeric", "text", 
+                                   "text", "text", "numeric", "text", "numeric", "text", 
+                                   "numeric", "text", "numeric", "text", "numeric", 
+                                   "text", "numeric", "text", "numeric", "text", 
+                                   "numeric", "text", "numeric", "text", "numeric", 
+                                   "text", "numeric", "text", "numeric", "text", 
+                                   "numeric", "text", "numeric", "text", "numeric", 
+                                   "text", "numeric", "text", "numeric", "text", 
+                                   "numeric", "text", "numeric", "text", "numeric", 
+                                   "text", "numeric", "text", "text", "text", "text", 
+                                   "text", "text", "text", "text", "text", "text", 
+                                   "text", "text", "text", "text", "text", "text", 
+                                   "text", "text", "text", "text", "text", "text", 
+                                   "text", "text", "text", "text", "text", "text",
+                                   "text", "text", "text", "text", "text", "text", 
+                                   "text", "text", "text", "text", "text", "text", 
+                                   "text", "text", "text", "text", "text", "text", 
+                                   "text", "text", "text", "text", "text", "text", 
+                                   "text", "text", "text", "text", "text", "text",
+                                   "text", "text", "text", "text", "text", "text",
+                                   "text", "text", "text", "text", "text", "text", 
+                                   "text", "text", "text", "text", "text", "text",
+                                   "text", "text", "text", "text", "text", "text",
+                                   "text", "text", "text", "text", "text", "text",
+                                   "text", "text", "text", "text", "text", "text",
+                                   "text", "text", "text"),
+                     col_names = epcnames, 
+                     skip=1, na="")
 #save(epcdata, file = './data-raw/epcdata.RData', compress = 'xz')
-load('./data-raw/epcdata.Rdata')
+#load('./data-raw/epcdata.Rdata')
 ```
 
 ## Run Some Crude Checks on the Data
