@@ -92,6 +92,7 @@ targets <- data.frame(bay_segment = c("OTB", "HB", "MTB", "LTB"),
 #                     col_names = epcnames, 
 #                     skip=1, na="")
 #save(epcdata, file = './data-raw/epcdata.RData', compress = 'xz')
+load('./data-raw/epcdata.Rdata')
 ```
 
 ## Run Some Crude Checks on the Data
