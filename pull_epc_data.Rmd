@@ -9,12 +9,12 @@ output:
 ---
 
 ```{r setup, include=FALSE}
-library(tidyverse)
-library(lubridate)
-library(readxl)
-library(curl)
-library(leaflet)
-library(rmarkdown)
+require(tidyverse)
+require(lubridate)
+require(readxl)
+require(curl)
+require(leaflet)
+require(rmarkdown)
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
@@ -26,7 +26,7 @@ The Environmental Protection Commission of Hillsborough County (EPCHC) has been 
 ```{r epchc_download}
 #URL of EPCHC's long-term dataset in Excel Spreadsheet format
  epchc_url <- "ftp://ftp.epchc.org/EPC_ERM_FTP/WQM_Reports/RWMDataSpreadsheet_ThroughCurrentReportMonth.xlsx"
- download.file(url = epchc_url, destfile = './data-raw/epchc.xlsx', method = "libcurl", mode = "wb")
+# download.file(url = epchc_url, destfile = './data-raw/epchc.xlsx', method = "libcurl", mode = "wb")
 ```
 
 ## Correctly Import EPCHC xlsx Data File into R
@@ -92,7 +92,7 @@ epcdata <- read_xlsx("./data-raw/epchc.xlsx",
                      col_names = epcnames, 
                      skip=1, na="")
 #save(epcdata, file = './data-raw/epcdata.RData', compress = 'xz')
-load('./data-raw/epcdata.Rdata')
+#load('./data-raw/epcdata.Rdata')
 ```
 
 ## Run Some Crude Checks on the Data
