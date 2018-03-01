@@ -1,7 +1,11 @@
 ---
 title: "Get EPCHC Data, Tidy it Up & Perform TBEP Annual WQ Assessment"
 author: "Ed Sherwood <esherwood@epchc.org>"
+<<<<<<< HEAD
 date: "January 18, 2018"
+=======
+date: "January 17, 2018"
+>>>>>>> ee29d700fb5b7918e50f0892d8414d0f4a71c1ea
 output: 
   html_document: 
     toc: yes
@@ -9,12 +13,12 @@ output:
 ---
 
 ```{r setup, include=FALSE}
-library(tidyverse)
-library(lubridate)
-library(readxl)
-library(curl)
-library(leaflet)
-library(rmarkdown)
+require(tidyverse)
+require(lubridate)
+require(readxl)
+require(curl)
+require(leaflet)
+require(rmarkdown)
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
@@ -26,7 +30,7 @@ The Environmental Protection Commission of Hillsborough County (EPCHC) has been 
 ```{r epchc_download}
 #URL of EPCHC's long-term dataset in Excel Spreadsheet format
  epchc_url <- "ftp://ftp.epchc.org/EPC_ERM_FTP/WQM_Reports/RWMDataSpreadsheet_ThroughCurrentReportMonth.xlsx"
- download.file(url = epchc_url, destfile = './data-raw/epchc.xlsx', method = "libcurl", mode = "wb")
+# download.file(url = epchc_url, destfile = './data-raw/epchc.xlsx', method = "libcurl", mode = "wb")
 ```
 
 ## Correctly Import EPCHC xlsx Data File into R
@@ -91,7 +95,11 @@ epcdata <- read_xlsx("./data-raw/epchc.xlsx",
                                    "text", "text", "text"),
                      col_names = epcnames, 
                      skip=1, na="")
+<<<<<<< HEAD
 save(epcdata, file = './data-raw/epcdata.RData', compress = 'xz')
+=======
+#save(epcdata, file = './data-raw/epcdata.RData', compress = 'xz')
+>>>>>>> ee29d700fb5b7918e50f0892d8414d0f4a71c1ea
 #load('./data-raw/epcdata.Rdata')
 ```
 
