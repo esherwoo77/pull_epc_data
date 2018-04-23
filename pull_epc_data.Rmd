@@ -47,7 +47,7 @@ ltb_stations <- c(23, 24, 25, 90, 91, 92, 93, 95)
 #Short Bay Segment Names
 bay_segments = c("OTB", "HB", "MTB", "LTB")
 
-#Data frame that lists bay segment specific management targets + low and high maxnitude exceedancethresholds
+#Data frame that lists bay segment specific management targets + low and high magnitude exceedance thresholds
 targets <- data.frame(bay_segment = c("OTB", "HB", "MTB", "LTB"),
                            name = c("Old Tampa Bay", "Hillsborough Bay", "Middle Tampa Bay", "Lower Tampa Bay"),
                            chla_target = c(8.5, 13.2, 7.4, 4.6),
