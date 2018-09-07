@@ -1,7 +1,7 @@
 ---
 title: "Get EPCHC Data, Tidy it Up & Perform TBEP Annual WQ Assessment"
 author: "Ed Sherwood <esherwood@epchc.org>"
-date: "January 17, 2018"
+date: "January 18, 2018"
 output: 
   html_document: 
     toc: yes
@@ -26,7 +26,11 @@ The Environmental Protection Commission of Hillsborough County (EPCHC) has been 
 ```{r epchc_download}
 #URL of EPCHC's long-term dataset in Excel Spreadsheet format
  epchc_url <- "ftp://ftp.epchc.org/EPC_ERM_FTP/WQM_Reports/RWMDataSpreadsheet_ThroughCurrentReportMonth.xlsx"
+<<<<<<< HEAD
  download.file(url = epchc_url, destfile = './data-raw/epchc.xlsx', method = "libcurl", mode = "wb")
+=======
+#download.file(url = epchc_url, destfile = './data-raw/epchc.xlsx', method = "libcurl", mode = "wb")
+>>>>>>> 84c9d3ab03e03937f6a34fd1756ef2a296543944
 ```
 
 ## Correctly Import EPCHC xlsx Data File into R
@@ -47,7 +51,7 @@ ltb_stations <- c(23, 24, 25, 90, 91, 92, 93, 95)
 #Short Bay Segment Names
 bay_segments = c("OTB", "HB", "MTB", "LTB")
 
-#Data frame that lists bay segment specific management targets + low and high maxnitude exceedancethresholds
+#Data frame that lists bay segment specific management targets + low and high magnitude exceedance thresholds
 targets <- data.frame(bay_segment = c("OTB", "HB", "MTB", "LTB"),
                            name = c("Old Tampa Bay", "Hillsborough Bay", "Middle Tampa Bay", "Lower Tampa Bay"),
                            chla_target = c(8.5, 13.2, 7.4, 4.6),
@@ -91,7 +95,7 @@ epcdata <- read_xlsx("./data-raw/epchc.xlsx",
                                    "text", "text", "text"),
                      col_names = epcnames, 
                      skip=1, na="")
-#save(epcdata, file = './data-raw/epcdata.RData', compress = 'xz')
+save(epcdata, file = './data-raw/epcdata.RData', compress = 'xz')
 #load('./data-raw/epcdata.Rdata')
 ```
 
@@ -314,7 +318,8 @@ for (i in seq_along(bay_segments)) {
 ## Export Annual Values as a Tidy CSV File
 Export final datasets to csv files in'data' folder.
 ```{r epchc_export_tidy_data}
-
+write.csv(chladata, file = "./data-processed/TB_Chla_Annual_Means.csv")
+write.csv(sdmdata, file = "./data-processed/TB_Secchi_Annual_Means.csv")
 ```
 
 
