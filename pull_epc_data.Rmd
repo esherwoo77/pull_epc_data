@@ -26,11 +26,7 @@ The Environmental Protection Commission of Hillsborough County (EPCHC) has been 
 ```{r epchc_download}
 #URL of EPCHC's long-term dataset in Excel Spreadsheet format
  epchc_url <- "ftp://ftp.epchc.org/EPC_ERM_FTP/WQM_Reports/RWMDataSpreadsheet_ThroughCurrentReportMonth.xlsx"
-<<<<<<< HEAD
  download.file(url = epchc_url, destfile = './data-raw/epchc.xlsx', method = "libcurl", mode = "wb")
-=======
-#download.file(url = epchc_url, destfile = './data-raw/epchc.xlsx', method = "libcurl", mode = "wb")
->>>>>>> 610cd3a123de881c92a8059a39cdf7dc21472810
 ```
 
 ## Correctly Import EPCHC xlsx Data File into R
