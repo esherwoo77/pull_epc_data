@@ -26,7 +26,7 @@ The Environmental Protection Commission of Hillsborough County (EPCHC) has been 
 ```{r epchc_download}
 #URL of EPCHC's long-term dataset in Excel Spreadsheet format
  epchc_url <- "ftp://ftp.epchc.org/EPC_ERM_FTP/WQM_Reports/RWMDataSpreadsheet_ThroughCurrentReportMonth.xlsx"
- download.file(url = epchc_url, destfile = './data-raw/epchc.xlsx', method = "libcurl", mode = "wb")
+# download.file(url = epchc_url, destfile = './data-raw/epchc.xlsx', method = "libcurl", mode = "wb")
 ```
 
 ## Correctly Import EPCHC xlsx Data File into R
@@ -203,7 +203,8 @@ mtbmoyrchla <- mtbmonchla %>%
                 drop_na() %>% 
                 group_by(yr, mo) %>% 
                 summarise(sum_chla = sum(chla)) %>% 
-                mutate(mean_chla = sum_chla/4125.2)
+                mutate(mean_chla = sum_chla/4125.2, 
+                       bay_segment ="MTB") 
 
 mtbyrchla <- mtbmoyrchla %>%
                 select(yr, mean_chla) %>% 
@@ -218,7 +219,8 @@ mtbmoyrsdm <- mtbmonsdm %>%
                 drop_na() %>% 
                 group_by(yr, mo) %>% 
                 summarise(sum_sdm = sum(sdm)) %>% 
-                mutate(mean_sdm = sum_sdm/4125.2)
+                mutate(mean_sdm = sum_sdm/4125.2, 
+                       bay_segment ="MTB")
 
 mtbyrsdm <- mtbmoyrsdm %>%
                 select(yr, mean_sdm) %>% 
@@ -229,7 +231,10 @@ mtbyrsdm <- mtbmoyrsdm %>%
 
 #Put it all together
 chladata <- bind_rows(tbyrchla, mtbyrchla)
+chlamodata <- bind_rows(tbmonchla, mtbmoyrchla)
 sdmdata <- bind_rows(tbyrsdm, mtbyrsdm)
+sdmmodata <- bind_rows(tbmonsdm, mtbmoyrsdm)
+
 sdmdata$mean_la <- ifelse(sdmdata$bay_segment =="OTB", 1.49/sdmdata$mean_sdm,
                              ifelse(sdmdata$bay_segment =="HB", 1.61/sdmdata$mean_sdm,
                                     ifelse(sdmdata$bay_segment =="MTB", 1.49/sdmdata$mean_sdm,
