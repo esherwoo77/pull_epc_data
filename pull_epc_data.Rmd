@@ -1,7 +1,7 @@
 ---
 title: "Get EPCHC Data, Tidy it Up & Perform TBEP Annual WQ Assessment"
 author: "Ed Sherwood <esherwood@epchc.org>"
-date: "January 18, 2018"
+date: "December 11, 2018"
 output: 
   html_document: 
     toc: yes
@@ -320,7 +320,9 @@ for (i in seq_along(bay_segments)) {
 Export final datasets to csv files in 'data-processed' folder.
 ```{r epchc_export_tidy_data}
 write.csv(chladata, file = "./data-processed/TB_Chla_Annual_Means.csv")
+write.csv(chlamodata, file = "./data-processed/TB_Chla_Monthly_means.csv")
 write.csv(sdmdata, file = "./data-processed/TB_Secchi_Annual_Means.csv")
+write.csv(sdmmodata, file = "./data-processed/TB_Secchi_Monthly_means.csv")
 ```
 
 
