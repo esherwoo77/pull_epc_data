@@ -1,6 +1,6 @@
 ---
 title: "Get EPCHC Data, Tidy it Up & Perform TBEP Annual WQ Assessment"
-author: "Ed Sherwood <esherwood@epchc.org>"
+author: "Ed Sherwood <esherwood@tbep.org>"
 date: "February 4, 2019"
 output: 
   html_document: 
