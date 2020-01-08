@@ -247,7 +247,7 @@ sdmdata$mean_la <- ifelse(sdmdata$bay_segment =="OTB", 1.49/sdmdata$mean_sdm,
 cols <- c("Annual Mean"="red", "Management Target"="blue", "Regulatory Threshold"="blue", "Small Mag. Exceedance"="blue", "Large Mag. Exceedance"="blue")
 for (i in seq_along(bay_segments)) {
    chlaplot <- chladata %>%
-                 filter(bay_segment == bay_segments[i] & yr<2019) %>% 
+                 filter(bay_segment == bay_segments[i] & yr<2020) %>% 
                  ggplot(aes(x=yr)) + 
                    geom_point(aes(y=mean_chla, colour="Annual Mean"), size=3) +
                    geom_line(aes(y=mean_chla, colour="Annual Mean"), size=0.75) +
@@ -283,7 +283,7 @@ for (i in seq_along(bay_segments)) {
 ```{r plot_la_annual_averages, results='asis'}
 for (i in seq_along(bay_segments)) {
     sdmplot <- sdmdata %>%
-                 filter(bay_segment == bay_segments[i] & yr<2019) %>% 
+                 filter(bay_segment == bay_segments[i] & yr<2020) %>% 
                  ggplot(aes(x=yr)) + 
                    geom_point(aes(y=mean_la, colour="Annual Mean"), size=3) +
                    geom_line(aes(y=mean_la, colour="Annual Mean"), size=0.75) +
